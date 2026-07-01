@@ -120,14 +120,10 @@ class HelpScreen(ModalScreen):
 
 class Amenity(App):
     CSS = """
-    Button { margin: 0 1; min-width: 14; }
+    Button { margin: 0 1; min-width: 10; }
     #file-table { height: 1fr; }
-    #footer { height: 6; }
-    #footer-buttons { height: 3; align: center middle; }
-    #status-label { height: 3; content-align: center middle; width: 100%; }
-    #help { margin-left: 2; }
-    #go { margin-left: 2; }
-    #exit { margin-left: 1; }
+    #footer-bar { height: 3; padding: 0 1; align: center middle; }
+    #status-label { margin: 0 2; content-align: center middle; }
     """
 
     BINDINGS = [
@@ -144,14 +140,13 @@ class Amenity(App):
     def compose(self):
         yield Header()
         yield DataTable(id="file-table")
-        with Vertical(id="footer"):
-            with Horizontal(id="footer-buttons"):
-                yield Button("Select All", id="select-all", variant="primary")
-                yield Button("Deselect All", id="deselect-all")
-                yield Button("Help", id="help")
-                yield Button("GO", id="go", variant="success")
-                yield Button("Exit", id="exit")
+        with Horizontal(id="footer-bar"):
+            yield Button("Select All", id="select-all", variant="primary")
+            yield Button("Deselect All", id="deselect-all")
             yield Label(id="status-label")
+            yield Button("GO", id="go", variant="success")
+            yield Button("Help", id="help")
+            yield Button("Exit", id="exit")
 
     def on_mount(self):
         self.title = f"Amenity v{APP_VERSION} — {self.directory.name}"
