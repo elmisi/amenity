@@ -122,8 +122,10 @@ class Amenity(App):
     CSS = """
     Button { margin: 0 1; min-width: 10; }
     #file-table { height: 1fr; }
-    #footer-bar { height: 3; padding: 0 1; align: center middle; }
-    #status-label { margin: 0 2; content-align: center middle; }
+    #footer-bar { height: 3; }
+    #left-group { width: 1fr; align: left middle; }
+    #status-label { content-align: center middle; }
+    #right-group { width: 1fr; align: right middle; }
     """
 
     BINDINGS = [
@@ -141,12 +143,14 @@ class Amenity(App):
         yield Header()
         yield DataTable(id="file-table")
         with Horizontal(id="footer-bar"):
-            yield Button("Select All", id="select-all", variant="primary")
-            yield Button("Deselect All", id="deselect-all")
+            with Horizontal(id="left-group"):
+                yield Button("Select All", id="select-all", variant="primary")
+                yield Button("Deselect All", id="deselect-all")
             yield Label(id="status-label")
-            yield Button("GO", id="go", variant="success")
-            yield Button("Help", id="help")
-            yield Button("Exit", id="exit")
+            with Horizontal(id="right-group"):
+                yield Button("GO", id="go", variant="success")
+                yield Button("Help", id="help")
+                yield Button("Exit", id="exit")
 
     def on_mount(self):
         self.title = f"Amenity v{APP_VERSION} — {self.directory.name}"
