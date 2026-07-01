@@ -49,6 +49,19 @@ python3 amenity.py /some/path   # scan a specific directory
 | `music`     | `.mp3`, `.flac`, `.wav`, `.aac`                                            |
 | `other`     | Everything else + files without extension                                  |
 
+## Screenshots
+
+![Main screen](screenshots/01_main_screen.svg)
+![All files selected](screenshots/02_all_selected.svg)
+![Help modal](screenshots/03_help_modal.svg)
+![Summary after GO](screenshots/04_summary.svg)
+
+To regenerate screenshots after UI changes:
+
+```bash
+python3 scripts/take_screenshots.py
+```
+
 ## Requirements
 
 - Python 3.12+
