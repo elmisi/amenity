@@ -10,7 +10,7 @@ from textual.containers import Horizontal, Vertical
 from textual.screen import ModalScreen
 from textual.widgets import Button, DataTable, Header, Label
 
-VERSION_FILE = Path(__file__).parent / "VERSIONE"
+VERSION_FILE = Path(__file__).parent / "VERSION"
 APP_VERSION = VERSION_FILE.read_text().strip() if VERSION_FILE.exists() else "?"
 
 CATEGORY_MAP: dict[str, set[str]] = {
@@ -123,9 +123,9 @@ class Amenity(App):
     Button { margin: 0 1; min-width: 10; }
     #file-table { height: 1fr; }
     #footer-bar { height: 3; }
-    #left-group { width: 1fr; align: left middle; }
-    #status-label { content-align: center middle; }
-    #right-group { width: 1fr; align: right middle; }
+    #left-group { width: 1fr; height: 3; align: left middle; }
+    #status-label { width: auto; height: 3; content-align: center middle; }
+    #right-group { width: 1fr; height: 3; align: right middle; }
     """
 
     BINDINGS = [
